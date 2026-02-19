@@ -12,3 +12,17 @@ enum ThemeColor {
 }
 
 ThemeColor currentThemeColor = ThemeColor.blue;
+
+class ThemeColorProvider extends ChangeNotifier {
+  ThemeColor _selected;
+
+  ThemeColorProvider([ThemeColor? initial]) : _selected = initial ?? ThemeColor.values.first;
+
+  ThemeColor get selected => _selected;
+
+  void select(ThemeColor theme) {
+    if (_selected == theme) return;
+    _selected = theme;
+    notifyListeners();
+  }
+}
